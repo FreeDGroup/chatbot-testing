@@ -360,7 +360,7 @@ class WDChatbotTest:
 
 
 if __name__ == '__main__':
-    fb_test = FBChatbotTest()
+    # fb_test = FBChatbotTest()
+    # fb_test.main()
     wd_test = WDChatbotTest()
-    fb_test.main()
     wd_test.main()
