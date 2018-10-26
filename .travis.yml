@@ -1,3 +1,4 @@
+
 language: python
 python:
   - "3.6"
@@ -11,9 +12,18 @@ before_install:
   - sudo apt-get install -y libpq-dev
   - sudo apt-get install -y python3-dev
 
+addons: # get google-chrome-stable
+  chrome: stable
+
 install:
   - pip install -r requirements.txt
-
+  - wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -P ~/
+  - unzip ~/chromedriver_linux64.zip -d ~/
+  - rm ~/chromedriver_linux64.zip
+  - sudo mv -f ~/chromedriver /usr/local/share/
+  - sudo chmod +x /usr/local/share/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 script:
-  - xvfb-run --server-args="-screen 0 1920x1080x24" make test
+  - whereis google-chrome-stable
+  - whereis chromedriver
   - python chatbot.py
