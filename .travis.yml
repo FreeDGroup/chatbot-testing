@@ -1,0 +1,18 @@
+language: python
+python:
+  - "3.6"
+
+env:
+  global:
+    - BUILD_ON_TRAVIS=true
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libpq-dev
+  - sudo apt-get install -y python3-dev
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - python chatbot.py
