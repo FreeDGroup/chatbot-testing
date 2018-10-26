@@ -5,7 +5,7 @@ python:
 env:
   global:
     - BUILD_ON_TRAVIS=true
-
+    - FLANB_OS=linux
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libpq-dev
