@@ -16,8 +16,9 @@ addons:
   chrome: stable
   artifacts:
     s3_region: "ap-northeast-2"
-    paths:
-    - $(ls ./screenshots/*.png | tr "\n" ":")
+#    paths:
+#    - $(ls ./screenshots/*.png | tr "\n" ":")
+    working_dir: travis
     target_paths: "travis/$TRAVIS_BUILD_NUMBER"
     debug: true
 
