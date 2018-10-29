@@ -18,7 +18,7 @@ addons:
     s3_region: "ap-northeast-2"
     paths:
     - $(ls ./screenshots/*.png | tr "\n" ":")
-    target_paths: $TRAVIS_BUILD_NUMBER
+    target_paths: "travis/$TRAVIS_BUILD_NUMBER"
     debug: true
 
 install:
