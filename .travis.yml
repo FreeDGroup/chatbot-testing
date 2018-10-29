@@ -12,8 +12,12 @@ before_install:
   - sudo apt-get install -y libpq-dev
   - sudo apt-get install -y python3-dev
 
-addons: # get google-chrome-stable
+addons:
   chrome: stable
+  artifacts: true
+    paths:
+    - $(ls /var/log/*.log | tr "\n" ":")
+    - $(ls /tmp/*.png | tr "\n" ":")
 
 install:
   - pip install -r requirements.txt
