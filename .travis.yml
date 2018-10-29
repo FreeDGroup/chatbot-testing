@@ -19,6 +19,8 @@ addons:
     paths:
     - $(ls /tmp/*.png | tr "\n" ":")
     - $(ls ./screenshots/*.png | tr "\n" ":")
+    target_paths:
+    - /tmp
     debug: true
 
 install:
