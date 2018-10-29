@@ -15,6 +15,7 @@ before_install:
 addons:
   chrome: stable
   artifacts:
+    s3_region: "ap-northeast-2"
     paths:
     - $(ls /tmp/*.png | tr "\n" ":")
 
