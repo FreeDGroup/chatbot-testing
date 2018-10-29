@@ -312,7 +312,7 @@ class WDChatbotTest:
     def weather(self):
         self.execute_while_limited(self.driver.find_element_by_xpath, '//div[@class="quickmenu-image weather"]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "您想查詢哪裡的天氣呢 ?")]]')
-        time.sleep(1)
+        time.sleep(10)
         self.execute_while_limited(self.driver.find_element_by_xpath,
                                    '//div[@class="search--input__box"]/input[@class="search--input"]').send_keys('首爾')
         self.execute_while_limited(self.driver.find_element_by_xpath, '//p[text()[contains(., "首爾")]]').click()
