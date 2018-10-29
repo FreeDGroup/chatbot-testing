@@ -14,9 +14,8 @@ before_install:
 
 addons:
   chrome: stable
-  artifacts: true
+  artifacts:
     paths:
-    - $(ls /var/log/*.log | tr "\n" ":")
     - $(ls /tmp/*.png | tr "\n" ":")
 
 install:
