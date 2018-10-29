@@ -18,6 +18,7 @@ addons:
     s3_region: "ap-northeast-2"
     paths:
     - $(ls /tmp/*.png | tr "\n" ":")
+    - $(ls ./screenshots/*.png | tr "\n" ":")
     debug: true
 
 install:
