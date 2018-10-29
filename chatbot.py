@@ -230,6 +230,7 @@ class WDChatbotTest:
         self.driver = webdriver.Chrome('./chromedriver_%s' % os.getenv('FLANB_OS'), chrome_options=chrome_options)
         self.driver.get('https://www.travelflan.com/')
         self.driver.implicitly_wait(1)
+        time.sleep(10)
         self.driver.switch_to.frame('tf-widget-iframe')
         self.execute_while_limited(self.driver.find_element_by_xpath, '//div[@class="tf-icon"]').click()
         time.sleep(1)
