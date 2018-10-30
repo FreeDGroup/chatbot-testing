@@ -346,7 +346,7 @@ class WDChatbotTest:
         self.execute_while_limited(self.driver.find_element_by_xpath, '//div[@class="quickmenu-image direction"]').click()
         self.execute_while_limited(
             self.driver.find_element_by_xpath,
-            '//div[@class="search--input__box add-padding"]/input[@class="search--input"]').send_keys('Pangyo')
+            '//div[@class="search--input__box add-padding"]/input[@class="search--input"]').send_keys('Pangyo Techno Valley')
         time.sleep(1)
         self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
             0].click()
@@ -356,7 +356,7 @@ class WDChatbotTest:
             '//div[@class="search--input__box add-padding"]/input[@class="search--input"]')
         self.execute_while_limited(
             self.driver.find_elements_by_xpath,
-            '//div[@class="search--input__box add-padding"]/input[@class="search--input"]')[1].send_keys('Gangnam')
+            '//div[@class="search--input__box add-padding"]/input[@class="search--input"]')[1].send_keys('Yatap Station')
         time.sleep(1)
         self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
             0].click()
@@ -365,16 +365,16 @@ class WDChatbotTest:
         return True
 
     def main(self):
-        # if not self.execute(self.itinerary, 5):
-        #     raise Exception('FAILED ITINERARY')
-        # if not self.execute(self.hotels, 5):
-        #     raise Exception('FAILED HOTELS')
-        # if not self.execute(self.booking, 5):
-        #     raise Exception('FAILED BOOKING')
+        if not self.execute(self.itinerary, 5):
+            raise Exception('FAILED ITINERARY')
+        if not self.execute(self.hotels, 5):
+            raise Exception('FAILED HOTELS')
+        if not self.execute(self.booking, 5):
+            raise Exception('FAILED BOOKING')
         if not self.execute(self.weather, 5):
             raise Exception('FAILED WEATHER')
-        if not self.execute(self.directions, 5):
-            raise Exception('FAILED DIRECTIONS')
+        # if not self.execute(self.directions, 5):
+        #     raise Exception('FAILED DIRECTIONS')
 
 
 if __name__ == '__main__':
