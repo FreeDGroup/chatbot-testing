@@ -256,7 +256,6 @@ class WDChatbotTest:
     def execute(self, method, times):
         start_time = time.time()
         print('%s start' % (method.__name__,))
-        print(os.getenv('FLANB_AWS_SECRET_ACCESS_KEY'))
         for e in range(times):
             self.init()
             print('Try %s.....' % (e+1,))
