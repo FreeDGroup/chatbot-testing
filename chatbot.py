@@ -1,11 +1,21 @@
 import os
 import time
+import boto3
+from boto3.s3.transfer import S3Transfer
 from datetime import datetime
 
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+
+boto3.setup_default_session(
+    region_name='ap-northeast-2',
+    aws_access_key_id=os.getenv('ARTIFACTS_KEY'),
+    aws_secret_access_key=os.getenv('ARTIFACTS_SECRET'))
+
+s3_client = boto3.client('s3')
+s3_transfer = S3Transfer(s3_client)
 
 
 class FBChatbotTest:
@@ -39,7 +49,9 @@ class FBChatbotTest:
                 print('SUCCESSFUL! %s secs' % (time.time() - start_time))
                 return True
             else:
-                self.driver.save_screenshot('screenshots/' + str(datetime.now()) + '.png')
+                filename = 'screenshots/' + str(datetime.now()) + '.png'
+                self.driver.save_screenshot(filename)
+                s3_transfer.upload_file(filename, 'flanb-data', 'travis/%s' % filename)
                 self.driver.quit()
         return False
 

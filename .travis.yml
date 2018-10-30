@@ -7,6 +7,7 @@ env:
   global:
     - BUILD_ON_TRAVIS=true
     - FLANB_OS=linux
+
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libpq-dev
@@ -14,15 +15,9 @@ before_install:
 
 addons:
   chrome: stable
-  artifacts:
-    s3_region: "ap-northeast-2"
-#    paths:
-#    - $(ls ./screenshots/*.png | tr "\n" ":")
-    working_dir: travis
-    target_paths: "travis/$TRAVIS_BUILD_NUMBER"
-    debug: true
 
 install:
   - pip install -r requirements.txt
+
 script:
   - python chatbot.py
