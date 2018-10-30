@@ -265,8 +265,10 @@ class WDChatbotTest:
                 print('SUCCESSFUL! %s secs' % (time.time() - start_time))
                 return True
             else:
-                self.driver.save_screenshot('screenshots/' + str(datetime.now()) + '.png')
-                s3_transfer.upload_file('./%s' % filename, 'flanb-data', 'travis/%s' % filename)
+                filename = 'screenshots/' + str(datetime.now()) + '.png'
+                self.driver.save_screenshot(filename)
+                s3_transfer.upload_file('./%s' % filename, 'flanb-data', 'travis/screenshots/%s/%s' % (
+                    os.getenv('TRAVIS_BUILD_NUMBER'), str(datetime.now()) + '.png'))
                 self.driver.quit()
         return False
 
