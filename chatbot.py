@@ -277,6 +277,7 @@ class WDChatbotTest:
         raise Exception('[FAILED] %s(\'%s\')' % (command.__name__, param))
 
     def itinerary(self):
+        return False
         self.execute_while_limited(self.driver.find_element_by_xpath,
                                    '//div[@class="quickmenu-image itinerary"]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()=" 首爾 "]').click()
