@@ -51,7 +51,7 @@ class FBChatbotTest:
             else:
                 filename = 'screenshots/' + str(datetime.now()) + '.png'
                 self.driver.save_screenshot(filename)
-                s3_transfer.upload_file(filename, 'flanb-data', 'travis/%s' % filename)
+                s3_transfer.upload_file(filename, 'flanb-data', 'test.png')
                 self.driver.quit()
         return False
 
