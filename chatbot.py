@@ -39,7 +39,7 @@ class FBChatbotTest:
 
     def execute(self, method, times):
         start_time = time.time()
-        print('%s star' % (method.__name__, ))
+        print('%s star %s' % (method.__name__, os.getenv('FLANB_AWS_ACCESS_KEY_ID')))
         for e in range(times):
             self.init()
             print('Try %s.....' % (e+1,))
@@ -289,7 +289,6 @@ class WDChatbotTest:
         raise Exception('[FAILED] %s(\'%s\')' % (command.__name__, param))
 
     def itinerary(self):
-        return False
         self.execute_while_limited(self.driver.find_element_by_xpath,
                                    '//div[@class="quickmenu-image itinerary"]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()=" 首爾 "]').click()
