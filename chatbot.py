@@ -51,7 +51,8 @@ class FBChatbotTest:
             else:
                 filename = 'screenshots/' + str(datetime.now()) + '.png'
                 self.driver.save_screenshot(filename)
-                s3_transfer.upload_file('./%s' % filename, 'flanb-data', 'travis/%s' % filename)
+                s3_transfer.upload_file('./%s' % filename, 'flanb-data', 'travis/screenshots/%s/%s' % (
+                    os.getenv('TRAVIS_BUILD_NUMBER'), str(datetime.now()) + '.png'))
                 self.driver.quit()
         return False
 
@@ -292,7 +293,6 @@ class WDChatbotTest:
         raise Exception('[FAILED] %s(\'%s\')' % (command.__name__, param))
 
     def itinerary(self):
-        return False
         self.execute_while_limited(self.driver.find_element_by_xpath,
                                    '//div[@class="quickmenu-image itinerary"]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()=" 首爾 "]').click()
