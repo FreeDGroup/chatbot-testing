@@ -236,7 +236,7 @@ class FBChatbotTest:
 class WDChatbotTest:
     def init(self):
         chrome_options = Options()
-        chrome_options.add_argument('headless')
+        # chrome_options.add_argument('headless')
         chrome_options.add_argument('window-size=1920x1080')
         chrome_options.add_argument("disable-gpu")
         self.driver = webdriver.Chrome('./chromedriver_%s' % os.getenv('FLANB_OS'), chrome_options=chrome_options)
@@ -257,7 +257,6 @@ class WDChatbotTest:
         start_time = time.time()
         print('%s start' % (method.__name__,))
         print('%s' % (os.getenv('FLANB_AWS_ACCESS_KEY_ID')))
-        print('%s' % (os.getenv('FLANB_AWS_SECRET_ACCESS_KEY')))
         for e in range(times):
             self.init()
             print('Try %s.....' % (e+1,))
@@ -291,7 +290,7 @@ class WDChatbotTest:
         raise Exception('[FAILED] %s(\'%s\')' % (command.__name__, param))
 
     def itinerary(self):
-        return False
+        # return False
         self.execute_while_limited(self.driver.find_element_by_xpath,
                                    '//div[@class="quickmenu-image itinerary"]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()=" 首爾 "]').click()
