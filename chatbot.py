@@ -11,8 +11,8 @@ from selenium.webdriver.chrome.options import Options
 
 boto3.setup_default_session(
     region_name='ap-northeast-2',
-    aws_access_key_id=os.getenv('ARTIFACTS_KEY'),
-    aws_secret_access_key=os.getenv('ARTIFACTS_SECRET'))
+    aws_access_key_id=os.getenv('FLANB_AWS_ACCESS_KEY_ID'),
+    aws_secret_access_key=os.getenv('FLANB_AWS_SECRET_ACCESS_KEY'))
 
 s3_client = boto3.client('s3')
 s3_transfer = S3Transfer(s3_client)
@@ -51,7 +51,7 @@ class FBChatbotTest:
             else:
                 filename = 'screenshots/' + str(datetime.now()) + '.png'
                 self.driver.save_screenshot(filename)
-                s3_transfer.upload_file('./%s' % filename, 'flanb-data', '/travis/%s' % filename)
+                s3_transfer.upload_file('./%s' % filename, 'flanb-data', 'travis/%s' % filename)
                 self.driver.quit()
         return False
 
