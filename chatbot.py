@@ -266,6 +266,7 @@ class WDChatbotTest:
                 return True
             else:
                 self.driver.save_screenshot('screenshots/' + str(datetime.now()) + '.png')
+                s3_transfer.upload_file('./%s' % filename, 'flanb-data', 'travis/%s' % filename)
                 self.driver.quit()
         return False
 
