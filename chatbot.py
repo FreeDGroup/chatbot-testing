@@ -39,7 +39,7 @@ class FBChatbotTest:
 
     def execute(self, method, times):
         start_time = time.time()
-        print('%s start %sz' % (method.__name__,os.getenv('FLANB_AWS_ACCESS_KEY_ID')))
+        print('%s star' % (method.__name__, ))
         for e in range(times):
             self.init()
             print('Try %s.....' % (e+1,))
