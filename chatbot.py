@@ -20,6 +20,9 @@ s3_transfer = S3Transfer(s3_client)
 
 class FBChatbotTest:
     def init(self):
+        print(os.getenv('FLANB_AWS_ACCESS_KEY_ID'))
+        print(os.getenv('FLANB_AWS_SECRET_ACCESS_KEY'))
+
         chrome_options = Options()
         chrome_options.add_argument('headless')
         chrome_options.add_argument('window-size=1920x1080')
