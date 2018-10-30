@@ -328,11 +328,11 @@ class WDChatbotTest:
     def weather(self):
         self.execute_while_limited(self.driver.find_element_by_xpath, '//div[@class="quickmenu-image weather"]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "您想查詢哪裡的天氣呢 ?")]]')
-        time.sleep(5)
         self.execute_while_limited(self.driver.find_element_by_xpath,
                                    '//div[@class="search--input__box"]/input[@class="search--input"]').send_keys('首爾')
-        time.sleep(5)
-        self.execute_while_limited(self.driver.find_element_by_xpath, '//p[text()[contains(., "首爾")]]').click()
+        time.sleep(1)
+        self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
+            0].click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "送出")]]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "的天氣")]]')
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., " 是")]]').click()
@@ -349,7 +349,8 @@ class WDChatbotTest:
             '//div[@class="search--input__box add-padding"]/input[@class="search--input"]').send_keys('首爾')
         time.sleep(1)
 
-        self.execute_while_limited(self.driver.find_element_by_xpath, '//p[text()[contains(., "首爾")]]').click()
+        self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
+            0].click()
         time.sleep(5)
         self.execute_while_limited(
             self.driver.find_element_by_xpath,
@@ -359,7 +360,8 @@ class WDChatbotTest:
             self.driver.find_elements_by_xpath,
             '//div[@class="search--input__box add-padding"]/input[@class="search--input"]')[1].send_keys('釜山')
         time.sleep(1)
-        self.execute_while_limited(self.driver.find_element_by_xpath, '//p[text()[contains(., "釜山")]]').click()
+        self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
+            0].click()
         time.sleep(1)
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "送出")]]').click()
         return True
