@@ -329,7 +329,7 @@ class WDChatbotTest:
         self.execute_while_limited(self.driver.find_element_by_xpath, '//div[@class="quickmenu-image weather"]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "您想查詢哪裡的天氣呢 ?")]]')
         self.execute_while_limited(self.driver.find_element_by_xpath,
-                                   '//div[@class="search--input__box"]/input[@class="search--input"]').send_keys('서울')
+                                   '//div[@class="search--input__box"]/input[@class="search--input"]').send_keys('Pangyo')
         time.sleep(1)
         self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
             0].click()
@@ -346,19 +346,17 @@ class WDChatbotTest:
         self.execute_while_limited(self.driver.find_element_by_xpath, '//div[@class="quickmenu-image direction"]').click()
         self.execute_while_limited(
             self.driver.find_element_by_xpath,
-            '//div[@class="search--input__box add-padding"]/input[@class="search--input"]').send_keys('首爾')
+            '//div[@class="search--input__box add-padding"]/input[@class="search--input"]').send_keys('Pangyo')
         time.sleep(1)
-
         self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
             0].click()
-        time.sleep(5)
+        time.sleep(3)
         self.execute_while_limited(
             self.driver.find_element_by_xpath,
             '//div[@class="search--input__box add-padding"]/input[@class="search--input"]')
-        time.sleep(5)
         self.execute_while_limited(
             self.driver.find_elements_by_xpath,
-            '//div[@class="search--input__box add-padding"]/input[@class="search--input"]')[1].send_keys('釜山')
+            '//div[@class="search--input__box add-padding"]/input[@class="search--input"]')[1].send_keys('Gangnam')
         time.sleep(1)
         self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
             0].click()
@@ -367,12 +365,12 @@ class WDChatbotTest:
         return True
 
     def main(self):
-        if not self.execute(self.itinerary, 5):
-            raise Exception('FAILED ITINERARY')
-        if not self.execute(self.hotels, 5):
-            raise Exception('FAILED HOTELS')
-        if not self.execute(self.booking, 5):
-            raise Exception('FAILED BOOKING')
+        # if not self.execute(self.itinerary, 5):
+        #     raise Exception('FAILED ITINERARY')
+        # if not self.execute(self.hotels, 5):
+        #     raise Exception('FAILED HOTELS')
+        # if not self.execute(self.booking, 5):
+        #     raise Exception('FAILED BOOKING')
         if not self.execute(self.weather, 5):
             raise Exception('FAILED WEATHER')
         if not self.execute(self.directions, 5):
