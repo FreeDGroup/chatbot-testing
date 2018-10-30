@@ -20,9 +20,6 @@ s3_transfer = S3Transfer(s3_client)
 
 class FBChatbotTest:
     def init(self):
-        print('z')
-        print(os.getenv('FLANB_AWS_ACCESS_KEY_ID'))
-        print(os.getenv('FLANB_AWS_SECRET_ACCESS_KEY'))
         chrome_options = Options()
         chrome_options.add_argument('headless')
         chrome_options.add_argument('window-size=1920x1080')
@@ -42,9 +39,7 @@ class FBChatbotTest:
 
     def execute(self, method, times):
         start_time = time.time()
-        print('%s start' % (method.__name__,))
-        print('zzzzz%s' % os.getenv('FLANB_AWS_ACCESS_KEY_ID'))
-        print(os.getenv('FLANB_AWS_SECRET_ACCESS_KEY'))
+        print('%s start %sz' % (method.__name__,os.getenv('FLANB_AWS_ACCESS_KEY_ID')))
         for e in range(times):
             self.init()
             print('Try %s.....' % (e+1,))
