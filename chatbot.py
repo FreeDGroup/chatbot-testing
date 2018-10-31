@@ -373,8 +373,8 @@ class WDChatbotTest:
             raise Exception('FAILED BOOKING')
         if not self.execute(self.weather, 5):
             raise Exception('FAILED WEATHER')
-        # if not self.execute(self.directions, 5):
-        #     raise Exception('FAILED DIRECTIONS')
+        if not self.execute(self.directions, 5):
+            raise Exception('FAILED DIRECTIONS')
 
 
 if __name__ == '__main__':
