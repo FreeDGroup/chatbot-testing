@@ -359,10 +359,10 @@ class WDChatbotTest:
         self.execute_while_limited(
             self.driver.find_elements_by_xpath,
             '//div[@class="search--input__box add-padding"]/input[@class="search--input"]')[1].send_keys('Yatap Station')
-        time.sleep(1)
+        time.sleep(2)
         self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
             0].click()
-        time.sleep(1)
+        time.sleep(2)
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "送出")]]').click()
         return True
 
