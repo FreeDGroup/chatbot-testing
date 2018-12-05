@@ -238,7 +238,7 @@ class FBChatbotTest:
 class WDChatbotTest:
     def init(self):
         chrome_options = Options()
-        chrome_options.add_argument('headless')
+        # chrome_options.add_argument('headless')
         # chrome_options.add_argument('window-size=1920x1080')
         # chrome_options.add_argument("disable-gpu")
         # chrome_options.add_argument("lang=zh")
@@ -249,7 +249,7 @@ class WDChatbotTest:
         self.driver.switch_to.frame('tf-widget-iframe')
         self.execute_while_limited(self.driver.find_element_by_xpath, '//div[@class="tf-icon"]').click()
         time.sleep(1)
-        self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "歡迎來到TravelFlan")]]')
+        self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "行程規劃太費事")]]')
 
     def send_keys_with_speed(self, element, text, pause=0.1):
         for character in text:
@@ -301,10 +301,10 @@ class WDChatbotTest:
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()="3 天 "]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "景點推薦")]]').click()
         self.driver.execute_script("window.scrollTo(0,10000)")
-        self.execute_while_limited(self.driver.find_element_by_xpath, '//div[text()=" 送出 "]').click()
-        self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "首爾的第1天行程")]]')
-        self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "首爾的第2天行程")]]')
-        self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "首爾的第3天行程")]]')
+        self.execute_while_limited(self.driver.find_element_by_xpath, '//div[text()[contains(., "送出")]]').click()
+        self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "Day 1-1")]]')
+        self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "Day 2-1")]]')
+        self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "Day 3-1")]]')
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "評分")]]')
         return True
 
@@ -332,9 +332,10 @@ class WDChatbotTest:
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "您想查詢哪裡的天氣呢 ?")]]')
         self.execute_while_limited(self.driver.find_element_by_xpath,
                                    '//div[@class="search--input__box"]/input[@class="search--input"]').send_keys('Pangyo')
-        time.sleep(1)
+        time.sleep(2)
         self.execute_while_limited(self.driver.find_elements_by_xpath, '//ul[@class="search--result__container"]/li')[
             0].click()
+        time.sleep(1)
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "送出")]]').click()
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., "的天氣")]]')
         self.execute_while_limited(self.driver.find_element_by_xpath, '//*[text()[contains(., " 是")]]').click()
